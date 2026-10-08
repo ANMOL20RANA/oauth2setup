@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myapp_db
+    username: postgres
+    password: secretpassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 
+            client-secret: 
+            scope:
+              - email
+              - profile
+          github:
+            client-id:
+            client-secret:
+            scope:
+              - user:email
+              - read:user
+
+application:
+  security:
+    jwt:
+      # Ensure this key is at least 256-bit (32+ characters)
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration-ms: 900000 # 15 minutes
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
